@@ -151,6 +151,8 @@ VOID enet_self_adaptive_port_speed(VOID)
 #else
 #if defined(__USE_DP83848) && __USE_DP83848
     dp83848_get_phy_status(ENET, &status);
+#elif defined(__USE_LAN8720A) && __USE_LAN8720A
+    lan8720a_get_phy_status(ENET, &status);
 #else
     rtl8201_get_phy_status(ENET, &status);
 #endif
@@ -417,6 +419,8 @@ static UINT _nx_driver_hardware_initialize(NX_IP_DRIVER *driver_req_ptr)
 #else
 #if defined(__USE_DP83848) && __USE_DP83848
     dp83848_config_t phy_config;
+#elif defined(__USE_LAN8720A) && __USE_LAN8720A
+    lan8720a_config_t phy_config;
 #else
     rtl8201_config_t phy_config;
 #endif
@@ -506,6 +510,10 @@ static UINT _nx_driver_hardware_initialize(NX_IP_DRIVER *driver_req_ptr)
     dp83848_reset(ENET);
     dp83848_basic_mode_default_config(ENET, &phy_config);
     if (dp83848_basic_mode_init(ENET, &phy_config) == true) {
+#elif defined(__USE_LAN8720A) && __USE_LAN8720A
+    lan8720a_reset(ENET);
+    lan8720a_basic_mode_default_config(ENET, &phy_config);
+    if (lan8720a_basic_mode_init(ENET, &phy_config) == true) {
 #else
     rtl8201_reset(ENET);
     rtl8201_basic_mode_default_config(ENET, &phy_config);
@@ -680,6 +688,8 @@ static UINT _nx_driver_hardware_enable(NX_IP_DRIVER *driver_req_ptr)
 #else
 #if defined(__USE_DP83848) && __USE_DP83848
         dp83848_get_phy_status(ENET, &status);
+#elif defined(__USE_LAN8720A) && __USE_LAN8720A
+        lan8720a_get_phy_status(ENET, &status);
 #else
         rtl8201_get_phy_status(ENET, &status);
 #endif

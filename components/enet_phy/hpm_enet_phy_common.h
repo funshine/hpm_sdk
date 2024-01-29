@@ -27,4 +27,9 @@
     #include "hpm_rtl8201_regs.h"
 #endif
 
+#if defined(__USE_LAN8720A) && __USE_LAN8720A
+    #include "hpm_lan8720a.h"
+    #include "hpm_lan8720a_regs.h"
+#endif
+
 #endif /* HPM_ENET_PHY_H */

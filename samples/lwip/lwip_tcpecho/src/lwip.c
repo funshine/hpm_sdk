@@ -52,6 +52,8 @@ hpm_stat_t enet_init(ENET_Type *ptr)
     #else
         #if defined(__USE_DP83848) && __USE_DP83848
         dp83848_config_t phy_config;
+        #elif defined(__USE_LAN8720A) && __USE_LAN8720A
+        lan8720a_config_t phy_config;
         #else
         rtl8201_config_t phy_config;
         #endif
@@ -135,6 +137,10 @@ hpm_stat_t enet_init(ENET_Type *ptr)
         dp83848_reset(ptr);
         dp83848_basic_mode_default_config(ptr, &phy_config);
         if (dp83848_basic_mode_init(ptr, &phy_config) == true) {
+        #elif defined(__USE_LAN8720A) && __USE_LAN8720A
+        lan8720a_reset(ptr);
+        lan8720a_basic_mode_default_config(ptr, &phy_config);
+        if (lan8720a_basic_mode_init(ptr, &phy_config) == true) {
         #else
         rtl8201_reset(ptr);
         rtl8201_basic_mode_default_config(ptr, &phy_config);

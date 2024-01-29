@@ -22,3 +22,8 @@ if($ENV{CONFIG_ENET_PHY_DP83848})
     add_subdirectory(dp83848)
     message(STATUS "ENet PHY Enabled: DP83848")
 endif()
+
+if($ENV{CONFIG_ENET_PHY_LAN8720A})
+    add_subdirectory(lan8720a)
+    message(STATUS "ENet PHY Enabled: LAN8720A")
+endif()
