@@ -65,6 +65,7 @@
 #define NX_LITTLE_ENDIAN    1
 
 
+#include "tx_api.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

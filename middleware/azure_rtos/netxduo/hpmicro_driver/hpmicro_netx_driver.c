@@ -159,6 +159,11 @@ VOID enet_self_adaptive_port_speed(VOID)
 #endif
 
     if (memcmp(&last_status, &status, sizeof(enet_phy_status_t)) != 0) {
+        if (status.enet_phy_link != last_status.enet_phy_link) {
+            nx_driver_information.nx_driver_information_ip_ptr->nx_ip_driver_link_up = status.enet_phy_link;
+            _nx_ip_driver_link_status_event(nx_driver_information.nx_driver_information_ip_ptr, 
+                            nx_driver_information.nx_driver_information_interface->nx_interface_index);
+        }
         memcpy(&last_status, &status, sizeof(enet_phy_status_t));
         if (status.enet_phy_link) {
             printf("Link Status: Up\n");

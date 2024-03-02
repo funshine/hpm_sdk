@@ -111,7 +111,7 @@ typedef unsigned short                          USHORT;
    if TX_TIMER_PROCESS_IN_ISR is not defined.  */
 
 #ifndef TX_TIMER_THREAD_STACK_SIZE
-#define TX_TIMER_THREAD_STACK_SIZE              1024        /* Default timer thread stack size  */
+#define TX_TIMER_THREAD_STACK_SIZE              4096        /* Default timer thread stack size  */
 #endif
 
 #ifndef TX_TIMER_THREAD_PRIORITY
