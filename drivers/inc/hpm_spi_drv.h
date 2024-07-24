@@ -687,7 +687,7 @@ static inline void spi_set_clock_phase(SPI_Type *ptr, spi_sclk_sampling_clk_edge
  */
 static inline spi_sclk_sampling_clk_edges_t spi_get_clock_phase(SPI_Type *ptr)
 {
-    return SPI_TRANSFMT_CPHA_GET(ptr->TRANSCTRL);
+    return (spi_sclk_sampling_clk_edges_t)SPI_TRANSFMT_CPHA_GET(ptr->TRANSCTRL);
 }
 
 /**
@@ -709,7 +709,7 @@ static inline void spi_set_clock_polarity(SPI_Type *ptr, spi_sclk_idle_state_t c
  */
 static inline spi_sclk_idle_state_t spi_get_clock_polarity(SPI_Type *ptr)
 {
-    return SPI_TRANSFMT_CPOL_GET(ptr->TRANSCTRL);
+    return (spi_sclk_idle_state_t)SPI_TRANSFMT_CPOL_GET(ptr->TRANSCTRL);
 }
 
 /**
