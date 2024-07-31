@@ -16,8 +16,11 @@
 #elif defined(CONFIG_TOUCH_GT911) && (CONFIG_TOUCH_GT911 == 1)
 #include "hpm_gt911.h"
 #define HPM_TOUCH_MAX_POINTS (GT911_MAX_TOUCH_POINTS)
+#elif defined(CONFIG_TOUCH_GT1151) && (CONFIG_TOUCH_GT1151 == 1)
+#include "hpm_gt1151.h"
+#define HPM_TOUCH_MAX_POINTS (GT1151_MAX_TOUCH_POINTS)
 #else
-#error "unknown touch type, either have CONFIG_FT5406 or CONFIG_GT911 defined"
+#error "unknown touch type, either have CONFIG_FT5406 or CONFIG_GT911 or CONFIG_GT1151 defined"
 #endif
 
 enum {
