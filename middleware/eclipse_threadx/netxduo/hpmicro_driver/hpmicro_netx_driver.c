@@ -427,6 +427,8 @@ static UINT _nx_driver_hardware_initialize(NX_IP_DRIVER *driver_req_ptr)
 #else
 #if defined(__USE_DP83848) && __USE_DP83848
     dp83848_config_t phy_config;
+#elif defined(__USE_LAN8720) && __USE_LAN8720
+    lan8720_config_t phy_config;
 #else
     rtl8201_config_t phy_config;
 #endif
@@ -516,6 +518,10 @@ static UINT _nx_driver_hardware_initialize(NX_IP_DRIVER *driver_req_ptr)
     dp83848_reset(ENET);
     dp83848_basic_mode_default_config(ENET, &phy_config);
     if (dp83848_basic_mode_init(ENET, &phy_config) == true) {
+#elif defined(__USE_LAN8720) && __USE_LAN8720
+    lan8720_reset(ENET);
+    lan8720_basic_mode_default_config(ENET, &phy_config);
+    if (lan8720_basic_mode_init(ENET, &phy_config) == true) {
 #else
     rtl8201_reset(ENET);
     rtl8201_basic_mode_default_config(ENET, &phy_config);
